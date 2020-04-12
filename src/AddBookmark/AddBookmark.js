@@ -8,9 +8,8 @@ const Required = () => (
 )
 
 class AddBookmark extends Component {
-  static defaultProps = {
-    onAddBookmark: () => { }
-  };
+  static contextType = BookmarksContext;
+
 
   state = {
     error: null,
