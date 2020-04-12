@@ -8,6 +8,8 @@ class BookmarkList extends Component {
   };
 
   render() {
+    console.log('this.props from BookmarkList.js render', this.props)
+
     const { bookmarks } = this.props
     return (
       <section className='BookmarkList'>

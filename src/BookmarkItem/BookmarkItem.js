@@ -3,6 +3,8 @@ import Rating from '../Rating/Rating';
 import './BookmarkItem.css';
 
 export default function BookmarkItem(props) {
+  console.log('props from BookmarkItem.js render', props)
+
   return (
     <li className='BookmarkItem'>
       <div className='BookmarkItem__row'>

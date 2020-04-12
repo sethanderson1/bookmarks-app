@@ -45,7 +45,7 @@ class App extends Component {
 
   addBookmark = bookmark => {
     this.setState({
-      bookmarks: [ ...this.state.bookmarks, bookmark ],
+      bookmarks: [...this.state.bookmarks, bookmark],
     })
   }
 
@@ -63,37 +63,42 @@ class App extends Component {
         }
         return res.json()
       })
-      .then(this.setBookmarks)
+      .then(data => {
+        console.log('data', data)
+        this.setBookmarks(data)
+      })
       .catch(error => this.setState({ error }))
   }
 
-  render() {
-    const { bookmarks } = this.state
-    return (
-      <main className='App'>
-        <h1>Bookmarks!</h1>
-        <Nav />
-        <div className='content' aria-live='polite'>
-          <Route
-            path='/add-bookmark'
-            render={({ history }) => {
-              return <AddBookmark
-                onAddBookmark={this.addBookmark}
-                onClickCancel={() => history.push('/')}
-              />
-            }}
-          />
-          <Route
-            exact
-            path='/'
-            render={({ history }) => {
-              return <BookmarkList bookmarks={bookmarks} />
-            }}
-          />
-        </div>
-      </main>
-    );
-  }
+
+render() {
+  const { bookmarks } = this.state
+  console.log('this.state from App.js render', this.state)
+  return (
+    <main className='App'>
+      <h1>Bookmarks!</h1>
+      <Nav />
+      <div className='content' aria-live='polite'>
+        <Route
+          path='/add-bookmark'
+          render={({ history }) => {
+            return <AddBookmark
+              onAddBookmark={this.addBookmark}
+              onClickCancel={() => history.push('/')}
+            />
+          }}
+        />
+        <Route
+          exact
+          path='/'
+          render={({ history }) => {
+            return <BookmarkList bookmarks={bookmarks} />
+          }}
+        />
+      </div>
+    </main>
+  );
+}
 }
 
 export default App;
