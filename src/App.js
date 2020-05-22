@@ -37,6 +37,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log('config.API_KEY', config.API_KEY)
+    console.log('asldkfjsdlfkjsdljflk')
     fetch(config.API_ENDPOINT, {
       method: 'GET',
       headers: {
